@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Assets/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>Weather Dashboard</title>
 </head>
 <body>
-
+    <div class="bg-img"></div>
     <form role="form">
         <label for="user-search">Please enter a city</label>
         <input type="text" id="user-search" placeholder="Search"><br>
         <button type="submit" id="submit-btn">Search</button>
     </form>
+    <div class="container">
+    </div>
+    <div class="circles">
+        <button class="move-btn" id="left"><i class="fas fa-chevron-left"></i></button>
+        <div class="circle" data-index="0" id="circle-0"></div>
+        <div class="circle" data-index="1" id="circle-1"></div>
+        <div class="circle" data-index="2" id="circle-2"></div>
+        <div class="circle" data-index="3" id="circle-3"></div>
+        <div class="circle" data-index="4" id="circle-4"></div>
+        <button class="move-btn" id="right"><i class="fas fa-chevron-right"></i></button>
+    </div>
     
 
 

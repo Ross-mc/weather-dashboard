@@ -1,0 +1,85 @@
+body{
+    position: fixed;
+    background: url("mob-bg-img.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+    font-family: 'Varela Round', sans-serif;
+    color: white;
+}
+
+
+.container{
+    position: relative;
+    height: 80vh;
+    width: auto;
+    margin-bottom: 2vh;
+    display: none;
+}
+
+.weather-card{
+    position: absolute;
+    top: 5%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0vw;
+    right: 0vw;
+    text-align: center;
+    width: 65%;
+}
+
+h1{
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+h3{
+    font-size: 4rem;
+    color: #f1c40f;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+
+
+.circles{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    display: none;
+}
+
+.move-btn{
+    background: none;
+    color: white;
+    border: none;
+    font-size: larger;
+    position: relative;
+    top: -2px;
+}
+
+.circle{
+    height: 2vh;
+    width: 2vh;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.off{
+    background-color: white;
+}
+
+.on{
+    background-color: #ffa502;
+}
