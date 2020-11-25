@@ -29,7 +29,7 @@ $(function(){
       currentCircleIndex = 0;
       $(".container").fadeOut(400);
       $(".circles").fadeOut(400);
-      $(".circle").addClass("off");
+      $(".circle").addClass("off").removeClass("on");
       $("#circle-0").removeClass("off").addClass("on");
 
       var userInput = $("#user-search").val().trim().toLowerCase();
@@ -187,7 +187,15 @@ $(function(){
           temperatureEl.text(dayObj.temperature + '°C');
 
           var iconImg = $("<img class='weather-icon'>");
-          var iconSrc = `http://openweathermap.org/img/wn/${dayObj.icon}@4x.png`;
+          var iconFile = dayObj.icon;
+          var iconArr = iconFile.split("");
+          console.log(iconArr)
+          if (iconArr[2] === "n"){
+            iconArr[2] = "d"
+          };
+
+          iconFile = iconArr.join("");
+          var iconSrc = `http://openweathermap.org/img/wn/${iconFile}@4x.png`;
           iconImg.attr("src", iconSrc);
 
           var humidityEl = $("<p class='bottom-icons'>");
