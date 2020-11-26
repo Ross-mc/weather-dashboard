@@ -1,6 +1,6 @@
 body{
     position: fixed;
-    background: url("mob-bg-img.jpg") no-repeat center center fixed;
+    background: url("mob-bg.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -19,6 +19,35 @@ body{
     color: white;
 }
 
+#user-search{
+    border-radius: 16px;
+    border: 1px solid #222;
+    position: absolute;
+    right: 1vw;
+    top: 1vh;
+}
+
+#submit-btn{
+    border: 1px solid #222;
+    border-radius: 6px;
+    position: absolute;
+    top: 4.5vh;
+    right: 1vw;
+    background-color:#2ecc71;
+    color: #222;
+}
+
+.front-container{
+    position: absolute;
+    top: 35vh;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0vw;
+    right: 0vw;
+    text-align: center;
+    width: 65%;
+}
+
 
 .container{
     position: relative;
@@ -26,11 +55,12 @@ body{
     width: auto;
     margin-bottom: 2vh;
     display: none;
+    top: 3vh;
 }
 
 .weather-card{
     position: absolute;
-    top: 5%;
+    top: 8%;
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
@@ -42,12 +72,20 @@ body{
 
 h1{
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 1.7rem;
+    margin: 2vh 1vw 2vh 1vw;
 }
 
 h3{
     font-size: 4rem;
     color: #f1c40f;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.weather-para{
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: white;
+    font-size: 1.5rem;
 }
 
 
@@ -82,4 +120,22 @@ h3{
 
 .on{
     background-color: #ffa502;
+}
+
+@media (min-width: 769px){
+    body{
+        background: url("desktop-bg-img.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .front-header{
+        font-size: 3rem;
+    }
+
+    em{
+        font-size: 1.5rem;
+    }
 }

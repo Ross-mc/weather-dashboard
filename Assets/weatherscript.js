@@ -24,10 +24,12 @@ $(function(){
 
     $("#submit-btn").on("click", function(event){
       event.preventDefault();
+      //fade out front page container
+      $(".front-container").fadeOut(400);
 
       //resets
       currentCircleIndex = 0;
-      $(".container").fadeOut(400);
+      $(".container").fadeOut(100);
       $(".circles").fadeOut(400);
       $(".circle").addClass("off").removeClass("on");
       $("#circle-0").removeClass("off").addClass("on");
@@ -51,7 +53,7 @@ $(function(){
         var today = dayArr[0];
   
   
-        var tempResponse = (parseInt(today.main.temp)- 273.15).toFixed(2);
+        var tempResponse = (parseInt(today.main.temp)- 273.15).toFixed(1);
   
         var weatherResponse = today.weather[0].description;
   
@@ -164,7 +166,7 @@ $(function(){
           var weatherCardDiv = $("<div class='weather-card'>");
           weatherCardDiv.attr("id", `day-card-${i}`);
           weatherCardDiv.css("left", positionLeft+"vw");
-          positionLeft+=140;
+          positionLeft+=150;
 
 
           //populate information in to card
@@ -175,6 +177,7 @@ $(function(){
           if (date == 'Now'){
             dateHeader.text(date)
           } else{
+            //REFORMATTING THE DATE FROM 2020-11-25 TO 25-11-2020
             var year = date.substr(0, 4);
             var month = date.substr(5, 2);
             var day = date.substr(8,2);
@@ -185,6 +188,13 @@ $(function(){
 
           var temperatureEl = $("<h3 class='temperature-header'>");
           temperatureEl.text(dayObj.temperature + '°C');
+
+          var weatherEl = $("<p class='weather-para'>");
+          var weather = dayObj.weather;
+          weather = weather.split("");
+          weather[0] = weather[0].toUpperCase();
+          weather = weather.join("");
+          weatherEl.text(weather);
 
           var iconImg = $("<img class='weather-icon'>");
           var iconFile = dayObj.icon;
@@ -199,11 +209,11 @@ $(function(){
           iconImg.attr("src", iconSrc);
 
           var humidityEl = $("<p class='bottom-icons'>");
-          humidityEl.text(dayObj.humidity + '%');
+          humidityEl.text("Humidity: " + dayObj.humidity + '%');
 
           //append information in to card
 
-          weatherCardDiv.append(dateHeader, temperatureEl, iconImg, humidityEl)
+          weatherCardDiv.append(dateHeader, temperatureEl, weatherEl, iconImg, humidityEl)
 
           //append new weather card to DOM
           $(".container").append(weatherCardDiv)
@@ -213,7 +223,7 @@ $(function(){
 
         var cityHeader = $("<h1 class='location'>");
         userInput = userInput.charAt(0).toUpperCase() + userInput.slice(1);
-        cityHeader.text(userInput);
+        cityHeader.text(userInput + " ~ 5 day forecast");
 
         $(".container").append(cityHeader).fadeIn(750)
         //display the movement div
@@ -233,11 +243,11 @@ $(function(){
       };
       if (clicked === 'left'){
         $(".weather-card").animate({
-          left: "+=140vw"
+          left: "+=150vw"
         }, 750)
       } else {
         $(".weather-card").animate({
-          left: "-=140vw"
+          left: "-=150vw"
         }, 750)
       }
       if (clicked === "left"){
