@@ -21,8 +21,26 @@ $(function(){
 
     //local storage
 
+    var searchHistory = [];
+
+    if (JSON.parse(localStorage.getItem("searchArray") !== null)){
+      searchHistory = JSON.parse(localStorage.getItem("searchArray"));
+      var historyBtn = $("<button id='history-dropdown'>");
+      historyBtn.text('Your Search History');
+      var dropdownEl = $("<i class='fas fa-caret-down'></i>");
+      historyBtn.append(dropdownEl);
+      var historyContainer = $("<div class='history-container'>");
+      $("body").append(historyBtn, historyContainer);
+
+    }
+
+
+
     function displayWeather(event){
       event.preventDefault();
+
+
+
       //fade out front page container
       $(".front-container").fadeOut(400);
 
@@ -33,8 +51,20 @@ $(function(){
       $(".circle").addClass("off").removeClass("on");
       $("#circle-0").removeClass("off").addClass("on");
 
-      var userInput = $("#user-search").val().trim().toLowerCase();
-      $("#user-search").val("")
+      var userInput = "";
+
+      if ($(this).attr("id") === "submit-btn"){
+        userInput = $("#user-search").val().trim().toLowerCase();
+        if (!searchHistory.includes(userInput)){
+          searchHistory.unshift(userInput);
+        }
+
+        localStorage.setItem("searchArray", JSON.stringify(searchHistory));
+        $("#user-search").val("");
+      } else{
+        userInput = $(this).attr('data-city');
+      }
+
 
       var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${userInput}&appid=${APIKey}`;
 
@@ -108,8 +138,8 @@ $(function(){
             }
 
             //this is not working!!!!
-            var containerArr = $(".container").children();
-            containerArr[0].appendChild(uvEl);
+            // var containerArr = $(".container").children();
+            // containerArr[0].appendChild(uvEl);
 
             //this is not working!!!!!
   
@@ -160,7 +190,6 @@ $(function(){
         var positionLeft = 0;
         for (let i = 0; i<weatherArr.length; i++){
           var dayObj = weatherArr[i];
-          console.log(dayObj)
           //create new weather-card
           var weatherCardDiv = $("<div class='weather-card'>");
           weatherCardDiv.attr("id", `day-card-${i}`);
@@ -198,7 +227,6 @@ $(function(){
           var iconImg = $("<img class='weather-icon'>");
           var iconFile = dayObj.icon;
           var iconArr = iconFile.split("");
-          console.log(iconArr)
           if (iconArr[2] === "n"){
             iconArr[2] = "d"
           };
@@ -238,6 +266,26 @@ $(function(){
 
     $("#submit-btn").on("click", displayWeather);
 
+    $("body").on("click", 'button#history-dropdown', function(){
+      var historyContainer = $(".history-container");
+      historyContainer.empty();
+      var ulEl = $("<ul id='history-list'>")
+      for (let i = 0; i<searchHistory.length; i++){
+        var liEl = $("<li class='history-item'>");
+        var btnEl = $("<button class='history-btn'>");
+        btnEl.attr("data-city", searchHistory[i]);
+        btnEl.text(searchHistory[i]);
+        liEl.append(btnEl);
+        ulEl.append(liEl);
+
+      };
+      historyContainer.append(ulEl);
+    });
+
+    $("body").on("click", 'button.history-btn', displayWeather)
+
+
+
 
 
     $(".move-btn").on("click", function(){
@@ -261,7 +309,6 @@ $(function(){
       }
       $(".circle").removeClass("off").removeClass("on");
       $(".circle").addClass("off");
-      console.log(currentCircleIndex)
       $(`#circle-${currentCircleIndex}`).removeClass('off').addClass('on');
 
 
