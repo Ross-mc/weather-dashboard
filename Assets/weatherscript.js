@@ -15,14 +15,13 @@ $(function(){
       }
     };
 
-
     let weatherArr = [];
 
     let currentCircleIndex = 0;
 
+    //local storage
 
-
-    $("#submit-btn").on("click", function(event){
+    function displayWeather(event){
       event.preventDefault();
       //fade out front page container
       $(".front-container").fadeOut(400);
@@ -234,7 +233,12 @@ $(function(){
   
       })
       
-    });
+    }
+
+
+    $("#submit-btn").on("click", displayWeather);
+
+
 
     $(".move-btn").on("click", function(){
       let clicked = $(this).attr("id");
