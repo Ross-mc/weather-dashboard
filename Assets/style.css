@@ -37,6 +37,32 @@ body{
     color: #222;
 }
 
+.front-header-small{
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 1rem;
+    position: absolute;
+    top: 1vh;
+    display: none;
+    left: 1vw;
+    margin-top: 0;
+    font-size: 0.8rem;
+    width: 50%;
+}
+
+@media(min-width: 800px){
+    .front-header-small{
+        margin-left: auto;
+        margin-right: auto;
+        left: 0vw;
+        right: 0vw;
+        text-align: center;
+        width: 80%;
+        font-size: 1rem;
+        margin-top: 1vh;
+
+    }
+}
+
 .front-container{
     position: absolute;
     top: 35vh;

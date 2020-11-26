@@ -31,13 +31,15 @@ $(function(){
       historyBtn.append(dropdownEl);
       var historyContainer = $("<div class='history-container'>");
       $("body").append(historyBtn, historyContainer);
-
+      displayWeather();
     }
 
 
 
     function displayWeather(event){
-      event.preventDefault();
+      if (event){
+        event.preventDefault();
+      }
 
 
 
@@ -50,6 +52,7 @@ $(function(){
       $(".circles").fadeOut(400);
       $(".circle").addClass("off").removeClass("on");
       $("#circle-0").removeClass("off").addClass("on");
+      $(".front-header-small").fadeIn(400);
 
       var userInput = "";
 
@@ -61,8 +64,10 @@ $(function(){
 
         localStorage.setItem("searchArray", JSON.stringify(searchHistory));
         $("#user-search").val("");
-      } else{
+      } else if ($(this).attr("class") === "history-btn"){
         userInput = $(this).attr('data-city');
+      } else {
+        userInput = searchHistory[0];
       }
 
 
@@ -250,7 +255,7 @@ $(function(){
 
         var cityHeader = $("<h1 class='location'>");
         userInput = userInput.charAt(0).toUpperCase() + userInput.slice(1);
-        cityHeader.text(userInput + " ~ 5 day forecast");
+        cityHeader.text(userInput);
 
         $(".container").append(cityHeader).fadeIn(750)
         //display the movement div
