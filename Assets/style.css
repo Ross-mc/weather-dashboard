@@ -19,6 +19,12 @@ body{
     color: white;
 }
 
+#user-search, #submit-btn, #history-dropdown, .history-btn{
+    font-weight: 600;
+    color: #444;
+
+}
+
 #user-search{
     border-radius: 16px;
     border: 1px solid #222;
@@ -35,7 +41,48 @@ body{
     top: 4.5vh;
     right: 1vw;
     background-color:#2ecc71;
-    color: #222;
+    z-index: 999;
+}
+
+#history-dropdown{
+    border: 1px solid #222;
+    border-radius: 6px;
+    position: absolute;
+    top: 8vh;
+    height: 2.5vh;
+    right: 1vw;
+    background-color:white;
+    z-index: 999;
+}
+
+.history-container{
+    position: absolute;
+    right: 1vw;
+    top: 10.5vh;
+    text-align: center;
+    z-index: 999;
+    border: 1px solid #222;
+    border-bottom: none;
+    background-color: white;
+    display: none;
+}
+ul{
+    font-size: 0;
+    padding-left: 0;
+}
+
+.history-btn{
+    background-color: white;
+    border: none;
+    width: 100%;
+    z-index: 999;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #222;
+}
+
+li{
+    list-style: none;
 }
 
 .front-header-small{
@@ -48,6 +95,7 @@ body{
     margin-top: 0;
     font-size: 0.8rem;
     width: 50%;
+    z-index: 0;
 }
 
 @media(min-width: 800px){
@@ -82,7 +130,7 @@ body{
     width: auto;
     margin-bottom: 2vh;
     display: none;
-    top: 4vh;
+    top: 12vh;
 }
 
 .weather-card{
@@ -173,6 +221,10 @@ h3{
         background-size: cover;
     }
 
+    .container{
+        top: 4vh;
+    }
+
     .front-header{
         font-size: 3rem;
     }
@@ -220,6 +272,17 @@ h3{
     #submit-btn{
         top: 10vh;
     }
+
+    #history-dropdown{
+        top: 18vh;
+        height: 6vh;
+    }
+
+    .history-container{
+        top: 24vh
+    }
+
+
 
     .bottom-icons{
         position: absolute;

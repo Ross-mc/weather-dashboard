@@ -19,6 +19,8 @@ $(function(){
 
     let currentCircleIndex = 0;
 
+    let isDropdownOn = false;
+
     //local storage
 
     var searchHistory = [];
@@ -26,7 +28,7 @@ $(function(){
     if (JSON.parse(localStorage.getItem("searchArray") !== null)){
       searchHistory = JSON.parse(localStorage.getItem("searchArray"));
       var historyBtn = $("<button id='history-dropdown'>");
-      historyBtn.text('Your Search History');
+      historyBtn.text('Your Search History ');
       var dropdownEl = $("<i class='fas fa-caret-down'></i>");
       historyBtn.append(dropdownEl);
       var historyContainer = $("<div class='history-container'>");
@@ -231,6 +233,8 @@ $(function(){
 
           var iconImg = $("<img class='weather-icon'>");
           var iconFile = dayObj.icon;
+
+          //for some reason it the API sometimes returns the night time version of the icon - I always want the daytime version
           var iconArr = iconFile.split("");
           if (iconArr[2] === "n"){
             iconArr[2] = "d"
@@ -272,19 +276,30 @@ $(function(){
     $("#submit-btn").on("click", displayWeather);
 
     $("body").on("click", 'button#history-dropdown', function(){
+
       var historyContainer = $(".history-container");
+
+      if (isDropdownOn){
+        isDropdownOn = false;
+        historyContainer.slideUp();
+        return
+      }
       historyContainer.empty();
       var ulEl = $("<ul id='history-list'>")
       for (let i = 0; i<searchHistory.length; i++){
         var liEl = $("<li class='history-item'>");
         var btnEl = $("<button class='history-btn'>");
         btnEl.attr("data-city", searchHistory[i]);
-        btnEl.text(searchHistory[i]);
+        var city = searchHistory[i];
+        city = city.charAt(0).toUpperCase() + city.slice(1);
+        btnEl.text(city);
         liEl.append(btnEl);
         ulEl.append(liEl);
 
       };
       historyContainer.append(ulEl);
+      historyContainer.slideDown()
+      isDropdownOn = true;
     });
 
     $("body").on("click", 'button.history-btn', displayWeather)
