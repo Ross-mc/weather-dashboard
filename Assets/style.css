@@ -25,6 +25,7 @@ body{
     position: absolute;
     right: 1vw;
     top: 1vh;
+    padding-left: 0.5vw;
 }
 
 #submit-btn{
@@ -81,7 +82,7 @@ body{
     width: auto;
     margin-bottom: 2vh;
     display: none;
-    top: 3vh;
+    top: 4vh;
 }
 
 .weather-card{
@@ -108,12 +109,27 @@ h3{
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+.temperature-header{
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+}
+
 .weather-para{
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     color: white;
     font-size: 1.5rem;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
 }
 
+.weather-icon{
+    max-width: 100%;
+    height: auto;
+}
+
+.bottom-icons{
+    margin-top: -4vh;
+}
 
 
 .circles{
@@ -164,4 +180,69 @@ h3{
     em{
         font-size: 1.5rem;
     }
+}
+
+@media (max-height: 600px){
+    .container{
+        height: 80%;
+    }
+    
+    .weather-card{
+        height: 65%;
+        top: 15vh;
+    }
+
+    .date-header{
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0vw;
+        right: 0vw;
+        text-align: center;
+        top: 1vh;
+        margin-top: 1vh;
+    }
+
+    .temperature-header{
+        font-size: 3rem;
+        position: absolute;
+        top: 10vh;
+        left: 6vw;
+    }
+
+    .weather-para{
+        position: absolute;
+        top: 28vh;
+        left: 7vw;
+        height: auto;
+    }
+
+    #submit-btn{
+        top: 10vh;
+    }
+
+    .bottom-icons{
+        position: absolute;
+        left: 7vw;
+        top: 44vh
+    }
+    .weather-icon{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        align-items: center;
+        right: 3vw;
+    }
+
+    .circles{
+        top: -10vh;
+    }
+
+    .circle{
+        height: 4vh;
+        width: 4vh;
+    }
+
 }
