@@ -26,15 +26,18 @@ $(function(){
     var searchHistory = [];
 
     if (JSON.parse(localStorage.getItem("searchArray") !== null)){
-      searchHistory = JSON.parse(localStorage.getItem("searchArray"));
-      var historyBtn = $("<button id='history-dropdown'>");
-      historyBtn.text('Your Search History ');
-      var dropdownEl = $("<i class='fas fa-caret-down'></i>");
-      historyBtn.append(dropdownEl);
-      var historyContainer = $("<div class='history-container'>");
-      $("body").append(historyBtn, historyContainer);
+      createHistory();
       displayWeather();
     }
+
+  function createHistory(){
+    searchHistory = JSON.parse(localStorage.getItem("searchArray"));
+    var historyBtn = $("<button id='history-dropdown'>");
+    historyBtn.text('Your Search History ');
+    var dropdownEl = $("<i class='fas fa-caret-down'></i>");
+    historyBtn.append(dropdownEl);
+    $("body").append(historyBtn);
+  }
 
 
 
@@ -65,11 +68,14 @@ $(function(){
         }
 
         localStorage.setItem("searchArray", JSON.stringify(searchHistory));
+        if (!$("#history-button").length){
+          createHistory();
+        }
         $("#user-search").val("");
       } else if ($(this).attr("class") === "history-btn"){
-        userInput = $(this).attr('data-city');
+          userInput = $(this).attr('data-city');
       } else {
-        userInput = searchHistory[0];
+          userInput = searchHistory[0];
       }
 
 
