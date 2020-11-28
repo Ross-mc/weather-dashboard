@@ -1,4 +1,31 @@
 $(function(){
+  //function for resolving screen moving issues with absolutely positioned elements using viewport relative sizing when a mobile keyboard is opened
+
+  function setViewport(){
+    let viewheight = $(window).height();
+    let viewwidth = $(window).width();
+    let viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=1.0");
+    $("body").css("height", viewheight+"px").css("width", viewwidth+"px");
+  }
+
+  let isMobile = false;
+  
+  //mobile browers will have mobi or android in the string of the useragent
+  if (/Mobi|Android/i.test(navigator.userAgent)) {
+    isMobile = true;
+    setViewport()
+  };
+  // we need to reset the viewport if the orientation changes
+  $("window").on("orientationchange", function(){
+    if (isMobile){
+      setViewport();
+    }
+  })
+
+
+
+
     //global variables
 
     const APIKey = "60f60127e3114e968bdfe2591489ab29";
