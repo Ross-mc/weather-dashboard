@@ -17,7 +17,7 @@ $(function(){
     setViewport()
   };
   // we need to reset the viewport if the orientation changes
-  $("window").on("orientationchange", function(){
+  window.addEventListener("orientationchange", function(){
     if (isMobile){
       setViewport();
     }
@@ -234,7 +234,7 @@ $(function(){
           var weatherCardDiv = $("<div class='weather-card'>");
           weatherCardDiv.attr("id", `day-card-${i}`);
           weatherCardDiv.css("left", positionLeft+"vw");
-          positionLeft+=150;
+          positionLeft+=155;
 
 
           //populate information in to card
@@ -256,6 +256,20 @@ $(function(){
 
           var temperatureEl = $("<h3 class='temperature-header'>");
           temperatureEl.text(dayObj.temperature + '°C');
+          var temperature = parseInt(dayObj.temperature);
+          if (temperature < 0){
+            temperatureEl.css("color", "#192a56");
+          } else if (temperature < 6){
+            temperatureEl.css("color", "#3498db");
+          } else if (temperature < 12){
+            temperatureEl.css("color", "#2ecc71")
+          } else if (temperature < 20){
+            temperatureEl.css("color", "#f1c40f")
+          } else if (temperature < 28){
+            temperatureEl.css("color", "#fa8231")
+          } else{
+            temperatureEl.css("color", "#ff3838")
+          }
 
           var weatherEl = $("<p class='weather-para'>");
           var weather = dayObj.weather;
@@ -348,11 +362,11 @@ $(function(){
       };
       if (clicked === 'left'){
         $(".weather-card").animate({
-          left: "+=150vw"
+          left: "+=155vw"
         }, 750)
       } else {
         $(".weather-card").animate({
-          left: "-=150vw"
+          left: "-=155vw"
         }, 750)
       }
       if (clicked === "left"){
