@@ -6,13 +6,13 @@ The application utilises the [Open Weather Map API](https://openweathermap.org/a
 
 ## Live page
 
-<!-- The coding quiz page is available [here](https://ross-mc.github.io/day-planner-app/) -->
+The weather dashboard page is available [here](https://ross-mc.github.io/weather-dashboard/)
 
-(tbc)
+## Notes
+
+This was an important project for me. I have never been the most creative person and it is something I am working really hard on to improve. I put a lot of work in to the design of the UI/UX of this web application and I am very happy with the results.
 
 ## Screenshots
 
-<!-- <img src="Assets/images/init.jpg" height="225px" width="400px">
-<img src="Assets/images/saved-items.jpg" height="225px" width="400px"> -->
-
-(tbc)
+<img src="Assets/images/homne.jpg" height="225px" width="400px">
+<img src="Assets/images/with-weather.jpg" height="225px" width="400px">
