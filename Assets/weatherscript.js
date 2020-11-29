@@ -335,6 +335,13 @@ $(function(){
         console.log(response);
         var message = response.responseJSON.message;
         alert(message);
+
+        // make sure that the bad input is not saved to local storage
+        if (searchHistory.includes(userInput.toLowerCase())){
+          searchHistory.shift(userInput);
+        }
+
+        localStorage.setItem("searchArray", JSON.stringify(searchHistory));
       });
       
     }
