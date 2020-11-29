@@ -1,15 +1,20 @@
 $(function(){
   //function for resolving screen moving issues with absolutely positioned elements using viewport relative sizing when a mobile keyboard is opened
 
+
+  let isMobile = false;
+
+  let viewheight = $(window).height();
+  console.log("viewheight: ", viewheight)
+  let viewwidth = $(window).width();
+  console.log("viewwidth: ", viewwidth);
+
   function setViewport(){
-    let viewheight = $(window).height();
-    let viewwidth = $(window).width();
+
     let viewport = document.querySelector("meta[name=viewport]");
     viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=1.0");
     $("body").css("height", viewheight+"px").css("width", viewwidth+"px");
   }
-
-  let isMobile = false;
   
   //mobile browers will have mobi or android in the string of the useragent
   if (/Mobi|Android/i.test(navigator.userAgent)) {
@@ -18,9 +23,14 @@ $(function(){
   };
   // we need to reset the viewport if the orientation changes
   window.addEventListener("orientationchange", function(){
+    var storedHeight = viewheight;
+    var storedWidth = viewwidth;
+    viewheight = storedWidth;
+    viewwidth = storedHeight
     if (isMobile){
       setViewport();
     }
+
   })
 
 
@@ -162,9 +172,10 @@ $(function(){
             weatherArr[0].uvIndex = uvResponse;
 
             var uvEl = $("<p class='bottom-icons'>");
-            var uvIndex = dayObj.uvIndex;
-            uvEl.text(uvIndex);
+            var uvIndex = uvResponse;
+            uvEl.text("UV: " + uvIndex);
             uvIndex = parseFloat(uvIndex);
+            uvEl.addClass("uv")
             if (uvIndex <= 2.9999){
               uvEl.addClass('low-uv');
             } else if (uvIndex <6){
@@ -178,8 +189,9 @@ $(function(){
             }
 
             //this is not working!!!!
-            // var containerArr = $(".container").children();
-            // containerArr[0].appendChild(uvEl);
+            
+            $("#day-card-0").append(uvEl);
+
 
             //this is not working!!!!!
   
@@ -285,6 +297,10 @@ $(function(){
           var iconArr = iconFile.split("");
           if (iconArr[2] === "n"){
             iconArr[2] = "d"
+          };
+          // The open weather icon for snow is black for some reason - this code tries to make it look better
+          if (iconArr[1] === "3"){
+            iconImg.css("filter", "invert(100%) sepia(0%) saturate(100%) hue-rotate(180deg) brightness(200%) contrast(103%)")
           };
 
           iconFile = iconArr.join("");

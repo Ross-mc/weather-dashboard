@@ -178,6 +178,40 @@ h3{
     margin-top: -4vh;
 }
 
+.uv{
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    padding: 4px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0vw;
+    right: 0vw;
+    text-align: center;
+    bottom: -10vh;
+}
+
+.low-uv{
+    background-color: #2ecc71;
+}
+
+.medium-uv{
+    background-color: #f1c40f;
+}
+
+.high-uv{
+    background-color: #f39c12;
+}
+
+.very-high-uv{
+    background-color: #d35400;
+}
+
+.extremely-high-uv{
+    background-color: #c0392b;
+}
 
 .circles{
     position: relative;
@@ -185,6 +219,7 @@ h3{
     transform: translateX(-50%);
     width: fit-content;
     display: none;
+    bottom: -2vh;
 }
 
 .move-btn{
@@ -288,6 +323,14 @@ h3{
         left: 7vw;
         top: 44vh
     }
+
+    .uv{
+        left: 10vw;
+        top: 47vh;
+        position: absolute;
+        margin: 0;
+    }
+
     .weather-icon{
         position: absolute;
         top: 0;
