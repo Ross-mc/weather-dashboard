@@ -121,6 +121,8 @@ $(function(){
       $.ajax({
         url: queryURL,
         method: "GET"
+        // success: function(response){ },
+        // error: function(error){ }
       }).then(function(response) {
         // the response includes an array called list. Each element is the next 3 hour block
         // we handle today seperately because we need to chain a uv request and because we use whatever the current time is
@@ -188,13 +190,11 @@ $(function(){
               uvEl.addClass('extremely-high-uv')
             }
 
-            //this is not working!!!!
-            
             $("#day-card-0").append(uvEl);
 
-
-            //this is not working!!!!!
   
+        }).catch(() => {
+          console.log('error happened')
         });
   
         var currentDate = today.dt_txt.substr(0,10);
@@ -331,7 +331,11 @@ $(function(){
   
   
   
-      })
+      }).catch(response => {
+        console.log(response);
+        var message = response.responseJSON.message;
+        alert(message);
+      });
       
     }
 
