@@ -14,5 +14,5 @@ This was an important project for me. I have never been the most creative person
 
 ## Screenshots
 
-<img src="Assets/images/homne.jpg" height="225px" width="400px">
-<img src="Assets/images/with-weather.jpg" height="225px" width="400px">
+<img src="Assets/home.jpg" height="225px" width="400px">
+<img src="Assets/with-weather.jpg" height="225px" width="400px">
